@@ -81,6 +81,8 @@ export async function Login(req: Request, res: Response) {
 			msg: "email or password is incorrect",
 		});
 	} catch (error: unknown) {
-		throw error;
+		res.status(502).json({
+			msg: "something went wrong",
+		});
 	}
 }
