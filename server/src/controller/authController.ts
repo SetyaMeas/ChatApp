@@ -6,15 +6,18 @@ import { isValidEmail, isValidString } from "../utils/validator";
 
 import { generateToken } from "../utils/generateToken";
 import { register } from "../mysql/service/authService";
+import { decode } from "jsonwebtoken";
 
 interface RegisterBody {
 	username: string;
 	email: string;
 	pwd: string;
 }
-
 export async function Register(req: Request | any, res: Response) {
 	const { username, email, pwd } = <RegisterBody>req.body;
+	const token: string = req.body.token;
+	const decoded = decode(token);
+	console.log(decoded);
 
 	if (!isValidEmail(email) || !isValidString(username) || !isValidString(pwd)) {
 		return res.status(400).json({

@@ -36,7 +36,7 @@ export async function getUserById(
 	}
 }
 
-export async function getUserByEmail(email: string) {
+export async function getUserByEmail(email: string): Promise<UserModel> {
 	try {
 		const [[user]]: any = await pool.query(
 			`
