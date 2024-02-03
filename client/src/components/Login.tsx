@@ -52,6 +52,7 @@ const Login = () => {
 			const data: LoginJsonRes = await res.json();
 
 			setCookie("token", data.token);
+			window.location.pathname = "/";
 		} catch (error: any) {
 			alert(error.msg);
 		}
@@ -59,27 +60,28 @@ const Login = () => {
 	return (
 		<form
 			onSubmit={(event: FormEvent) => handleSubmit(event)}
-			className="flex-justify-align-col gap-[15px] w-[300px] py-[60px] border-2 border-black"
+			className="apply-shadow flex-justify-align-col gap-[15px] w-[300px] py-[30px] border border-[#dedede] rounded-md"
 		>
+			<p className="text-[24px] font-bold text-[#444444]">Login</p>
 			<input
-				className="w-[90%] px-[6px] py-[3px] text-[18px] border-[2px] border-black rounded-md outline-none"
+				className="w-[90%] h-[36px] px-[6px] text-[15px] outline-none border-b-[2px] border-[#0835fe]"
 				type="text"
 				placeholder="Enter email"
 				ref={email}
 			/>
 			<input
-				className="w-[90%] px-[6px] py-[3px] text-[18px] border-[2px] border-black rounded-md outline-none"
+				className="w-[90%] h-[36px] px-[6px] text-[15px] outline-none border-b-[2px] border-[#0835fe]"
 				type="password"
 				placeholder="Enter password"
 				ref={pwd}
 			/>
-			<button className="px-[15px] h-[36px] bg-[#0835fe] text-[white] text-[18px] rounded-sm hover:opacity-90">
+			<button className="w-[90%] px-[15px] h-[36px] bg-[#0835fe] text-[white] text-[15px] rounded-sm hover:opacity-90">
 				login
 			</button>
 			<p>
 				Don't have account? &#183;{" "}
 				<a href="/auth" className="text-[blue]">
-					Go to auth page
+					Auth
 				</a>
 			</p>
 		</form>

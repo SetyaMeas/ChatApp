@@ -3,11 +3,9 @@ import AuthPages from "./pages/AuthPages";
 import Cookies from "js-cookie";
 import ContentPages from "./pages/ContentPages";
 import { Navigate } from "react-router-dom";
-import GoogleTest from "./components/GoogleTest";
 
 const App = () => {
 	const token: string | undefined = Cookies.get("token");
-	const email: string | undefined = Cookies.get("email");
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -19,7 +17,6 @@ const App = () => {
 					path="/auth/*"
 					element={token ? <Navigate to="/" /> : <AuthPages />}
 				/>
-				<Route path="/test" element={<GoogleTest />} />
 			</Routes>
 		</BrowserRouter>
 	);

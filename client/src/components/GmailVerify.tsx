@@ -1,5 +1,4 @@
-import { useGoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-const clientId: string = import.meta.env.VITE_GOOGLE_CLIENT_ID as string;
+import { useGoogleLogin } from "@react-oauth/google";
 import { setCookie } from "../utils/cookies";
 
 interface UserInfo {
@@ -34,7 +33,7 @@ function CustomLoginButton() {
 	return (
 		<button
 			onClick={() => googleLogin()}
-			className="w-[120px] px-[15px] h-[36px] bg-[#25cb00] text-[white] text-[18px] rounded-sm hover:opacity-90"
+			className="w-[120px] px-[15px] h-[36px] bg-[black] text-[white] text-[18px] rounded-sm hover:opacity-90"
 		>
 			register
 		</button>
@@ -44,9 +43,7 @@ function CustomLoginButton() {
 const GmailVerify = () => {
 	return (
 		<div>
-			<GoogleOAuthProvider clientId={clientId}>
-				<CustomLoginButton />
-			</GoogleOAuthProvider>
+			<CustomLoginButton />
 		</div>
 	);
 };

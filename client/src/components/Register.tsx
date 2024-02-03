@@ -2,17 +2,6 @@ import { FormEvent, useRef } from "react";
 import Cookies from "js-cookie";
 import { setCookie } from "../utils/cookies";
 
-// interface UserInfo {
-// 	email: string;
-// 	email_verified: boolean;
-// 	family_name: string;
-// 	given_name: string;
-// 	locale: string;
-// 	name: string;
-// 	picture: string;
-// 	sub: string;
-// }
-
 const Register = () => {
 	const api: string = import.meta.env.VITE_API as string;
 
@@ -61,9 +50,10 @@ const Register = () => {
 						token: string;
 					}
 					const data: Data = await res.json();
-					console.log(data);
-
 					setCookie("token", data.token);
+					Cookies.remove("email");
+
+					window.location.pathname = "/";
 				} else {
 					if (res.status === 400) {
 						interface Data {
@@ -86,22 +76,26 @@ const Register = () => {
 		<>
 			<form
 				onSubmit={(event: FormEvent) => handleSubmit(event)}
-				className="flex flex-col items-center gap-[15px] w-[300px] py-[18px] border-2 border-black"
+				className="flex flex-col items-center gap-[15px] w-[300px] py-[39px] apply-shadow rounded-md border-[1px] border-[#dfdfdf]"
 			>
+				<p className="text-[24px] font-bold text-[#444444]">
+					Create an account
+				</p>
+
 				<input
-					className="w-[90%] px-[6px] py-[3px] text-[18px] border-[2px] border-black rounded-md outline-none"
+					className="w-[90%] h-[36px] px-[6px] text-[15px] outline-none border-b-[2px] border-[black]"
 					ref={username}
 					type="text"
 					placeholder="Enter username"
 				/>
 				<input
-					className="w-[90%] px-[6px] py-[3px] text-[18px] border-[2px] border-black rounded-md outline-none"
+					className="w-[90%] h-[36px] px-[6px] text-[15px] outline-none border-b-[2px] border-[black]"
 					ref={pwd}
-					type="password"
+					type="text"
 					placeholder="Enter password"
 				/>
 
-				<button className="w-[90%] px-[15px] h-[36px] bg-[#0835fe] text-[white] text-[18px] rounded-sm hover:opacity-90">
+				<button className="w-[90%] h-[36px] bg-[black] text-[white] text-[15px] rounded-sm hover:opacity-90">
 					register
 				</button>
 

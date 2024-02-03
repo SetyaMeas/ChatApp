@@ -50,3 +50,22 @@ export async function getUserByEmail(email: string): Promise<UserModel> {
 		throw error;
 	}
 }
+
+export async function deletUserById(userId: number) {
+	try {
+		const [res]: any = await pool.query(
+			`
+			delete from ${userTable}
+			where userId = ?;
+		`,
+			[userId]
+		);
+
+		if (res.affectedRows > 0) {
+			return true;
+		}
+		return false;
+	} catch (error) {
+		throw error;
+	}
+}
