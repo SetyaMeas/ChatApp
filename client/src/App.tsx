@@ -7,6 +7,7 @@ import GoogleTest from "./components/GoogleTest";
 
 const App = () => {
 	const token: string | undefined = Cookies.get("token");
+	const email: string | undefined = Cookies.get("email");
 	return (
 		<BrowserRouter>
 			<Routes>

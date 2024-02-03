@@ -15,9 +15,6 @@ interface RegisterBody {
 }
 export async function Register(req: Request | any, res: Response) {
 	const { username, email, pwd } = <RegisterBody>req.body;
-	const token: string = req.body.token;
-	const decoded = decode(token);
-	console.log(decoded);
 
 	if (!isValidEmail(email) || !isValidString(username) || !isValidString(pwd)) {
 		return res.status(400).json({
@@ -34,8 +31,13 @@ export async function Register(req: Request | any, res: Response) {
 		}
 
 		const user = await register(username, email, hashSync(pwd, 12));
+		const token: string = generateToken({
+			userId: user.userId,
+			email: user.email,
+		});
 		res.json({
 			user: user,
+			token,
 		});
 	} catch (error: unknown) {
 		res.status(502).json({

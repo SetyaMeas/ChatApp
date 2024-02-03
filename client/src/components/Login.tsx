@@ -78,8 +78,8 @@ const Login = () => {
 			</button>
 			<p>
 				Don't have account? &#183;{" "}
-				<a href="register" className="text-[blue]">
-					Register
+				<a href="/auth" className="text-[blue]">
+					Go to auth page
 				</a>
 			</p>
 		</form>

@@ -1,3 +1,5 @@
+import GmailVerify from "./GmailVerify";
+
 interface AuthButtonProp {
 	text: string;
 	bgColor: string;
@@ -20,8 +22,8 @@ const AuthButton = ({ text, bgColor, route }: AuthButtonProp) => {
 const Auth = () => {
 	return (
 		<div className="border flex gap-[15px]">
-			<AuthButton text="register" bgColor="#03d003" route="/auth/register" />
-			<AuthButton text="login" bgColor="#092df7" route="auth/login" />
+			<GmailVerify />
+			<AuthButton text="login" bgColor="#092df7" route="/auth/login" />
 		</div>
 	);
 };
